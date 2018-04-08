@@ -8,7 +8,15 @@ class BitsOfCoin{
 		this.mine = this.mine.bind(this)
 		this.newTransaction = this.newTransaction.bind(this)
 	}
-	getChain(){}
-	mine(){}
-	newTransaction(){}
+	getChain(req, res, next){
+		req.responseValue = {
+			message: 'Get Chain',
+			chain: this.blockchain.chain
+		}
+    	return next()
+	}
+	mine(req, res, next){}
+	newTransaction(req, res, next){}
 }
+
+module.exports = new BitsOfCoin()
