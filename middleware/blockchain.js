@@ -39,7 +39,9 @@ class Blockchain {
   }
 
   hash (block) {
+
     const blockString = JSON.stringify(block)
+    console.log(block);
     const hash = crypto.createHmac(process.env.HASH_TYPE, process.env.CRYPTO_SECRET)
     .update(blockString)
     .digest('hex')
@@ -48,6 +50,8 @@ class Blockchain {
   }
 
   validProof (lastProof, proof) {
+    console.log(proof)
+    console.log(lastProof)
     const guessHash = crypto.createHmac(process.env.HASH_TYPE, process.env.CRYPTO_SECRET)
     .update(`${lastProof}${proof}`)
     .digest('hex')
@@ -55,6 +59,7 @@ class Blockchain {
   }
 
   proofOfWork (lastProof) {
+    console.log(lastProof);
     let proof = 0
     while (true) {
       if (!this.validProof(lastProof, proof)) {

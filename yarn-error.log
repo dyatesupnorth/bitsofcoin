@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/daveyates/.nvm/versions/node/v8.6.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js test
+  /Users/daveyates/.nvm/versions/node/v8.6.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js start
 
 PATH: 
   /Users/daveyates/.rbenv/bin:/Users/daveyates/.rbenv/shims:/Users/daveyates/.rbenv/shims:/Users/daveyates/.nvm/versions/node/v8.6.0/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -23,14 +23,15 @@ npm manifest:
       "test": "./node_modules/.bin/mocha --reporter spec"
     },
     "dependencies": {
-      "cookie-parser": "~1.4.3",
-      "debug": "~2.6.9",
+      "cookie-parser": "^1.4.3",
+      "debug": "^2.6.9",
+      "dotenv": "^5.0.1",
       "express": "^4.16.3",
       "express-validator": "^5.1.2",
       "http-errors": "^1.6.3",
-      "jade": "~1.11.0",
+      "jade": "^1.11.0",
       "mocha": "^5.0.5",
-      "morgan": "~1.9.0",
+      "morgan": "^1.9.0",
       "request": "^2.85.0"
     }
   }
@@ -1031,7 +1032,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c ./node_modules/.bin/mocha --reporter spec
+  Arguments: -c node ./bin/www
   Directory: /Users/daveyates/Sites/bitsofcoin
   Output:
   

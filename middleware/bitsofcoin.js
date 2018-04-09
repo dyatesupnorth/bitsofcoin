@@ -16,6 +16,7 @@ class BitsOfCoin{
     	return next()
 	}
 	mine(req, res, next){
+
 		const lastBlock = this.blockchain.lastBlock()
 	    const lastProof = lastBlock.proof
 	    const proof = this.blockchain.proofOfWork(lastProof)
@@ -31,9 +32,22 @@ class BitsOfCoin{
 	      message: 'New Block mined'
 	    }, newBlock)
 	    req.responseValue = responseValue
+
 	    return next()
 	}
-	newTransaction(req, res, next){}
+	newTransaction(req, res, next){
+		const errors = validationResult(req)
+	    if (!errors.isEmpty()) {
+	      return res.status(422).json({ errors: errors.mapped() })
+	    }
+	    const trans = req.body
+	    const index = this.blockchain.newTransaction(trans['sender'], trans['recipient'], trans['amount'])
+	    const responseValue = {
+	      message: `Transaction will be added to Block ${index}`
+	    }
+	    req.responseValue = responseValue
+	    return next()
+	}
 }
 
 module.exports = new BitsOfCoin()
